@@ -10,7 +10,7 @@ public:
     Example(int p){
         pass = p;
     }
-    void setX(int a, int p){
+    void setX(int a, int p){cd D:
         if(pass == p) x = a;
     }
 
