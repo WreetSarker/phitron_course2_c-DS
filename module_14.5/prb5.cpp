@@ -14,6 +14,7 @@ int main(){
     for(int i = 0; i <m; i++){
         for(int j = 0; j < n; j++){
             cin>>val;
+
             frq[val]++;
             if(frq[val]== 1){
                 arr[i][j] = val;
