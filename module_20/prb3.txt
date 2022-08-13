@@ -1,0 +1,4 @@
+The time complexity of binary search
+is O(logN) because in every iteration
+the array or the list of numbers
+is divided into half.
