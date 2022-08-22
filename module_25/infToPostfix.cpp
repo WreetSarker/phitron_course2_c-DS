@@ -56,19 +56,19 @@ int postfixEvaluation(string chk){
             int b = st.pop();
             switch(chk[i]){
             case '+':
-                st.push(a+b);
+                st.push(b+a);
                 break;
             case '-':
-                st.push(a-b);
+                st.push(b-a);
                 break;
             case '*':
-                st.push(a*b);
+                st.push(b*a);
                 break;
             case '/':
-                st.push(a/b);
+                st.push(b/a);
                 break;
             case '^':
-                st.push(pow(a, b));
+                st.push(pow(b, a));
                 break;
             default:
                 break;
