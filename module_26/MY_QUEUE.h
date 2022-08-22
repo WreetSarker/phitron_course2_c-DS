@@ -1,21 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+template<typename N>
 class Node{
 public:
-    int data;
-    Node* next;
+    N data;
+    Node<N> *next;
 
-    Node(int data){
+    Node(N data){
         this->data = data;
         this->next = NULL;
     }
 };
 
+
+template<typename Q>
 class Queue{
 public:
-    Node* front;
-    Node* rear;
+    Node<Q>* front;
+    Node<Q>* rear;
     int size;
 
     Queue(){
@@ -23,12 +26,12 @@ public:
         this->rear = NULL;
         this->size = 0;
     }
-    int getSize(){
+    Q getSize(){
         return this->size;
     }
 
-    void enqueue(int data){
-        Node* newNode = new Node(data);
+    void enqueue(Q data){
+        Node<Q>* newNode = new Node<Q>(data);
         if(this->size == 0){
             this->front = newNode;
             this->rear = newNode;
@@ -41,27 +44,30 @@ public:
         return;
     }
 
-    int peek(){
+    Q peek(){
+        Q topVal;
         if(this->size>0){
-            return this->front->data;
+            topVal = this->front->data;
+            return topVal;
         }else{
-            return -1;
+            return topVal;
         }
     }
 
-    int dequeue(){
+    Q dequeue(){
+        Q retVal;
         if(this->size == 0){
             cout<<"Queue is empty!"<<endl;
-            return -1;
+            return retVal;
         }
-        int retVal = this->peek();
+        retVal = this->peek();
         if(this->size == 1){
             this->front = NULL;
             this->rear = NULL;
             this->size --;
             return retVal;
         }
-        Node* delNode = this->front;
+        Node<Q>* delNode = this->front;
         this->front = this->front->next;
         delete delNode;
         this->size--;
@@ -72,22 +78,3 @@ public:
         return this->size == 0;
     }
 };
-
-int main(){
-
-    Queue q;
-    q.enqueue(1);
-    q.enqueue(2);
-    q.enqueue(3);
-    q.enqueue(4);
-    q.enqueue(5);
-
-    cout<<"Size: "<<q.getSize()<<endl;
-    cout<<"Peek: "<<q.peek()<<endl;
-    while(!q.isEmpty()){
-        cout<<q.dequeue()<<" ";
-    }
-
-
-    return 0;
-}
